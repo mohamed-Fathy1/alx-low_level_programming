@@ -7,27 +7,31 @@
 
 int main(void)
 {
-	int c;
+	int j;
 	int i;
+	int k;
+	int m;
 
-	c = 0;
-	while (c <= 9)
+	for (i = 0; i <= 9; i++)
 	{
-		putchar('0' + c);
-		putchar('0' + i);
-		if (c < 9 || i < 9)
+		for (j = 0; j <= 9; j++)
 		{
-			putchar(',');
-			putchar(' ');
-		}
-		if (i >= 9)
-		{
-			i = 0;
-			c++;
-		}
-		else
-		{
-			i++;
+			for (k = 0; k <= 9; k++)
+			{
+				for (m = 0; m <= 9; m++)
+				{
+					putchar('0' + i);
+					putchar('0' + j);
+					putchar(' ');
+					putchar('0' + k);
+					putchar('0' + m);
+					if (i < 9 || j < 9 || k < 9 || m < 9)
+					{
+						putchar(',');
+						putchar(' ');
+					}
+				}
+			}
 		}
 	}
 	putchar('\n');
