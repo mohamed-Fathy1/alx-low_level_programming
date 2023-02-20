@@ -1,16 +1,13 @@
 #include <stdio.h>
+#include <unistd.h>
 /**
-* main - Entry point
-*
-* Return: Always 0 (Success)
-*/
-
+ * main - Entry point
+ * Description: prints all possible combination of 2-digit numbers
+ * Return: Always 0 (success)
+ */
 int main(void)
 {
-	int j;
-	int i;
-	int k;
-	int m;
+	int i, j, k, m;
 
 	for (i = 0; i <= 9; i++)
 	{
@@ -22,7 +19,6 @@ int main(void)
 				{
 					if (((k + m) > (i + j) && k >= i) || i < k)
 					{
-						
 						putchar('0' + i);
 						putchar('0' + j);
 						putchar(' ');
