@@ -1,7 +1,7 @@
 #include <ctype.h>
 
 /**
- * _islower - check if typed input is lowercase
+ * _isalpha - check if typed input is lowercase
  *
  * @c: takes parameter c type of int and ckeck of its lowercase
  *
