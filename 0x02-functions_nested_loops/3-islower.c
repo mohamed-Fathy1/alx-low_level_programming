@@ -3,7 +3,7 @@
 /*
  * _islower - check if typed input is lowercase
  *
- * Return : 1 if lowercase else return 0
+ * Return: return 1 if lowercase else return 0
  */
 int _islower(int c)
 {
