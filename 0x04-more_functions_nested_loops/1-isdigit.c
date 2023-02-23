@@ -9,12 +9,12 @@
  */
 int _isdigit(int c)
 {
-	if (isdigit(c))
+	if (c <= 9 || c >= 0)
 	{
-		return (1);
+		if (isdigit(c))
+		{
+			return (1);
+		}
 	}
-	else
-	{
-		return (0);
-	}
+	return (0);
 }
