@@ -1,7 +1,7 @@
 #include <ctype.h>
 
 /**
- * _isupper - check if a charcter is uppercase
+ * _isdigit - check if a charcter is uppercase
  *
  * @c: is an integer
  *
@@ -9,7 +9,7 @@
  */
 int _isdigit(int c)
 {
-	if (c <= 9 || c >= 0)
+	if (c <= '9' || c >= '0')
 	{
 		if (isdigit(c))
 		{
