@@ -1,41 +1,27 @@
-#include <stdlib.h>
 #include "main.h"
 
 /**
- * print_number - check the code
- *
- * @n: first argumebt
- *
- * Return: 0 (secuses)
+ * print_number - prints an integer
+ * @n: integer to be printed
  */
 void print_number(int n)
 {
-	int power;
+	unsigned int n1;
 
-	power = 1;
-	if (n == 0)
-	{
-		_putchar('0');
-	}
-	else
-	{
 	if (n < 0)
 	{
-		n = abs(n);
+		n1 = -n;
 		_putchar('-');
-	}
-	while (n > power)
-		power *= 10;
-	power /= 10;
-	while (n != 0)
+	} else
 	{
-		int digit = n / power;
+		n1 = n;
+	}
 
-		_putchar('0' + digit);
-		if (digit != 0)
-			n = n - (digit * power);
-		if (power != 1)
-			power /= 10;
+	if (n1 / 10)
+	{
+		print_number(n1 / 10);
 	}
-	}
+
+	_putchar((n1 % 10) + '0');
 }
+
