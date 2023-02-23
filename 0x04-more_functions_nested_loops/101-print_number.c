@@ -17,7 +17,9 @@ void print_number(int n)
 	{
 		_putchar('0');
 	}
-	else if (n < 0)
+	else
+	{
+	if (n < 0)
 	{
 		n = abs(n);
 		_putchar('-');
@@ -34,5 +36,6 @@ void print_number(int n)
 			n = n - (digit * power);
 		if (power != 1)
 			power /= 10;
+	}
 	}
 }
