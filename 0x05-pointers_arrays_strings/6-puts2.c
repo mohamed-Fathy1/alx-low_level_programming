@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "main.h"
 /**
  * puts2 - main function
  *
