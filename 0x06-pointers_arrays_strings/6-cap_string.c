@@ -13,7 +13,7 @@ char *cap_string(char *s)
 
 	for (i = 0; i < len; i++)
 	{
-		if (!isalpha(s[i - 1]) && !isdigit(s[i - 1]))
+		if (!isalpha(s[i - 1]) && !isdigit(s[i - 1]) && s[i - 1] != '-')
 		{
 			s[i] = toupper(s[i]);
 		}
