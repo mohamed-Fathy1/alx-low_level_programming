@@ -5,7 +5,6 @@
  * @n: integer params
  * Return: 0
  */
-
 void rev_string(char *n)
 {
 	int i = 0;
@@ -17,7 +16,6 @@ void rev_string(char *n)
 		i++;
 	}
 	i--;
-
 	for (j = 0; j < i; j++, i--)
 	{
 		temp = *(n + j);
@@ -34,7 +32,6 @@ void rev_string(char *n)
  * @size_r: buffer size
  * Return: pointer to calling function
  */
-
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
 	int overflow = 0, i = 0, j = 0, digits = 0;
@@ -76,4 +73,3 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	rev_string(r);
 	return (r);
 }
-
