@@ -1,5 +1,4 @@
 #include <string.h>
-#include <stdio.h>
 /**
  * _strchr - main function
  *
@@ -10,8 +9,8 @@
  */
 char *_strchr(char *s, char c)
 {
-	unsigned int i;
-	unsigned int len = strlen(s);
+	int i;
+	int len = strlen(s);
 
 	for (i = 0; i < len; i++)
 	{
