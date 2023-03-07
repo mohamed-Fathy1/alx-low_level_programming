@@ -9,7 +9,7 @@
  */
 char *_strstr(char *haystack, char *needle)
 {
-	long unsigned int i, j;
+	unsigned long int i, j;
 
 	for (i = 0; haystack[i]; i++)
 	{
