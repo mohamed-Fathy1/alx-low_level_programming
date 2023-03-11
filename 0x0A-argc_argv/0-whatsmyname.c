@@ -2,10 +2,12 @@
 /**
  * main - check the code
  *
+ * @argv: input
+ *
  * Return: Always 0.
  */
 int main(int argc, char *argv[])
 {
-    puts(argv[argc - 1]);
-    return (0);
+	puts(argv[argc - argc]);
+	return (0);
 }
