@@ -9,9 +9,9 @@
 char *str_concat(char *s1, char *s2)
 {
 	unsigned int i;
-	unsigned int len1 = strlen(s1);
-	unsigned int len2 = strlen(s2);
-	unsigned int len = len1 + len2;
+	unsigned int len;
+	unsigned int len2;
+	unsigned int len;
 	char *p;
 
 	if (s1 == NULL)
@@ -22,6 +22,10 @@ char *str_concat(char *s1, char *s2)
 	{
 		s2 = "";
 	}
+
+	len1 = strlen(s1);
+	len2 = strlen(s2);
+	len = len1 + len2;
 
 	p = (char *)malloc((len + 1) * sizeof(char));
 
