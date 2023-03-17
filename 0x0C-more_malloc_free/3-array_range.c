@@ -1,23 +1,24 @@
 #include <stdlib.h>
 #include "main.h"
 /**
- * *array_range - creates an array of intege
- * @min: minimum range of values sto
- * @max: maximum range of values stored and number of element
- * Return: pointer to the new array
+ * *array_range - allocates memory for an arra
+ * @min: number of elements in the arra
+ * @max: size of each elemen
+ * Return: pointer to allocated memo
  */
 int *array_range(int min, int max)
 {
-	int *ptr;
-	int i, size;
+	int i;
+	int *p;
 
 	if (min > max)
 		return (NULL);
-	size = max - min + 1;
-	ptr = malloc(sizeof(int) * size);
-	if (ptr == NULL)
+
+	p = malloc((max - min) * sizeof(int));
+
+	if (p == NULL)
 		return (NULL);
-	for (i = 0; min <= max; i++)
-		ptr[i] = min++;
-	return (ptr);
+	for (i = 0; i < (max - min); i++)
+		p[i] = min + i;
+	return (p);
 }
