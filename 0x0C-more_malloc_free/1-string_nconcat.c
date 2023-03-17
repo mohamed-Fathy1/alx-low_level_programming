@@ -1,9 +1,11 @@
 #include <stdlib.h>
 #include <string.h>
 /**
- * malloc_checked - main fuction
- * @b: input
- * Return: void
+ * string_nconcat - main fuction
+ * @s1: input
+ * @s2: input
+ * @n: input
+ * Return: char
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
@@ -22,7 +24,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	for (i = 0; i < strlen(s1); i++)
 		p[i] = s1[i];
 
-	p = realloc(p, (strlen(s1)+n) * sizeof(char));
+	p = realloc(p, (strlen(s1) + n) * sizeof(char));
 	if (p == NULL)
 		return (NULL);
 
