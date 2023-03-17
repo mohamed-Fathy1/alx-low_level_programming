@@ -32,8 +32,12 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	if (p == NULL)
 		return (NULL);
 
-	for (; a < n; i++)
-		p[i] = s2[a++];
+	if (n < strlen(s2))
+		for (; a < n; i++)
+			p[i] = s2[a++];
+	else
+		for (; a < strlen(s2); i++)
+			p[i] = s2[a++];
 	p[i] = '\0';
 	return (p);
 }
