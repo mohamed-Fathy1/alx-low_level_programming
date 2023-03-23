@@ -1,3 +1,4 @@
+#include <stdio.h>
 /**
  * print_name - func discription
  * @name: first input
