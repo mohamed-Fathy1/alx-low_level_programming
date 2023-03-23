@@ -12,6 +12,7 @@ int main(int argc, char *argv[])
 {
 	int a, b;
 	char *opre;
+
 	if (argc != 4)
 	{
 		printf("Error\n");
@@ -21,8 +22,7 @@ int main(int argc, char *argv[])
 	opre = argv[2];
 	b = atoi(argv[3]);
 
-	if (*opre != '/' && *opre != '+' && *opre != '%'
-&& *opre != '-' && *opre != '*')
+	if (get_op_func(opre) == NULL || opre[1] != '\0')
 	{
 		printf("Error\n");
 		exit(99);
