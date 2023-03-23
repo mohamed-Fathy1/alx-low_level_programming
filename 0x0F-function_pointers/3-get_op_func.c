@@ -1,4 +1,5 @@
 #include "3-calc.h"
+#include <stdio.h>
 #include <string.h>
 #include "function_pointers.h"
 /**
@@ -18,7 +19,7 @@ int (*get_op_func(char *s))(int, int)
 	};
 	unsigned int i = 0;
 
-	while (i < strlen((char *)ops))
+	while (i < strlen((char *)ops) - 1)
 	{
 		if (*s == *(ops[i].op))
 		{
