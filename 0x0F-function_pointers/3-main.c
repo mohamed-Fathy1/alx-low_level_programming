@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 			&& *opre != '-'  && opre[1] != '\0')
 	{
 		printf("Error\n");
-		exit(100);
+		exit(99);
 	}
 	if ((*opre == '/' || *opre == '%') && (b == 0))
 	{
