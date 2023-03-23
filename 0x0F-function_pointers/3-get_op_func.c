@@ -18,7 +18,6 @@ int (*get_op_func(char *s))(int, int)
 		{NULL, NULL}
 	};
 	unsigned int i = 0;
-
 	while (i < strlen((char *)ops) - 1)
 	{
 		if (*s == *(ops[i].op))
