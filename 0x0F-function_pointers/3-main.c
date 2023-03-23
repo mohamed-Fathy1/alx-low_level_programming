@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 	b = atoi(argv[3]);
 
 	if (*opre != '/' && *opre != '+' && *opre != '%'
-			&& *opre != '-' && *opre != '*')
+			&& *opre != '-'  && opre[1] != '\0')
 	{
 		printf("Error\n");
 		exit(100);
