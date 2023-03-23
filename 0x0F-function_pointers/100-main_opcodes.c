@@ -15,13 +15,13 @@ int main(int argc, char *argv[])
 
 	if (argc != 2)
 	{
-		printf("Erorr\n");
+		printf("Error\n");
 		exit(1);
 	}
 	byte = atoi(argv[1]);
 	if (byte < 0)
 	{
-		printf("Erorr\n");
+		printf("Error\n");
 		exit(2);
 	}
 	arr = (char *)main;
