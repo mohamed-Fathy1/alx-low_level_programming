@@ -3,20 +3,23 @@
 #include <stdlib.h>
 
 /**
- * sum_listint - function
+ * insert_nodeint_at_index - function
  * @head: input
+ * @idx: input
+ * @n: n
  * Return: int
  */
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
 	unsigned int i;
 	listint_t *ptr = NULL;
-	listint_t *current = *head;
+	listint_t *current;
 
-	if (*head == NULL)
+	if (head == NULL)
 	{
 		return (NULL);
 	}
+	current = *head;
 	ptr = malloc(sizeof(listint_t));
 	if (!ptr)
 		return (NULL);
