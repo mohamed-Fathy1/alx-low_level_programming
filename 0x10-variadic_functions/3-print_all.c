@@ -33,10 +33,9 @@ void print_all(const char * const format, ...)
 					break;
 				case 's':
 					p = va_arg(ap, char *);
-					if (p)
-						printf("%s%s", sep, p);
-					else
-						printf("(nil)");
+					if (!p)
+						p = "(nil)";
+					printf("%s%s", sep, p);
 					break;
 				default:
 					i++;
