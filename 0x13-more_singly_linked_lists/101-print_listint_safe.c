@@ -1,5 +1,6 @@
 #include "lists.h"
 #include <stdio.h>
+#include <stddef.h>
 
 size_t looped_listint_len(const listint_t *head);
 
