@@ -10,12 +10,12 @@
  */
 int get_bits(unsigned long int n, unsigned int index, unsigned int i)
 {
-	if (index < i)
-		return (-1);
 	if (index == i)
 		return (n & 1);
 	if (n > 1)
 		get_bits(n >> 1, index, i + 1);
+	else
+		return (-1);
 	return (get_bits(n >> 1, index, i + 1));
 }
 /**
