@@ -10,6 +10,9 @@
  */
 int get_bits(unsigned long int n, unsigned int index, unsigned int i)
 {
+	if (index < i)
+		return (-1);
+
 	if (index == i)
 		return (n & 1);
 	if (n > 1)
