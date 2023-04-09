@@ -6,6 +6,7 @@
  * set_bit - function
  * @n: input
  * @index: input
+ * Return: int
  */
 int set_bit(unsigned long int *n, unsigned int index)
 {
