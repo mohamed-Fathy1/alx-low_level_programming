@@ -24,8 +24,6 @@ int get_bits(unsigned long int n, unsigned int index, unsigned int i)
  */
 int get_bit(unsigned long int n, unsigned int index)
 {
-	if (index > 63)
-		return (-1);
 	return (get_bits(n, index, 0));
 }
 
