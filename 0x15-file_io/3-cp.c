@@ -33,17 +33,21 @@ int main(int argc, char *argv[])
 		exit(99);
 	}
 	r_from = read(file_from, buffer, 1024);
+	file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	do {
 	if (file_from == -1 || r_from == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
-	file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (write(file_to, buffer, r_from) == -1 || file_to == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 		exit(99);
 	}
+	r_from = read(file_from, buffer, 1024);
+	file_to = open(argv[2], O_WRONLY | O_APPEND);
+	} while (r_from > 0);
 	free(buffer);
 	if (close(file_from) == -1 || close(file_to) == -1)
 	{
