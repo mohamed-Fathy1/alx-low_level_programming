@@ -3,6 +3,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <string.h>
 
 /**
  * append_text_to_file - function
@@ -12,23 +13,20 @@
  */
 int append_text_to_file(const char *filename, char *text_content)
 {
-	int opened, witre, i = 0;
+	int fd, len = 0;
 
 	if (!filename)
 		return (-1);
 
+	fd = open(filename, O_APPEND | O_WRONLY);
+	if (fd == -1)
+		return (-1);
+
 	if (text_content)
 	{
-		i = 0;
-		while (text_content[i])
-			i++;
+		len = strlen(text_content);
+		write(fd, text_content, len);
 	}
-	opened = open(filename, O_WRONLY | O_APPEND);
-	witre = write(opened, text_content, i);
-
-	if (opened == -1 || witre == -1)
-		return (-1);
-	close(opened);
-
+	close(fd);
 	return (1);
 }
