@@ -3,7 +3,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
-
+#include <string.h>
 /**
  * create_file - function
  * @filename: input
@@ -12,25 +12,20 @@
  */
 int create_file(const char *filename, char *text_content)
 {
-	int file_dirc, witre, i = 0;
+	int fd, len = 0;
+
+	len = strlen(text_content);
 
 	if (filename == NULL)
 		return (-1);
 
-	if (text_content != NULL)
-	{
-		i = 0;
-		while (text_content[i])
-			i++;
-	}
-
-	file_dirc = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0600);
-	witre = write(file_dirc, text_content, i);
-
-	if (file_dirc == -1 || witre == -1)
+	fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0600);
+	if (fd == -1)
 		return (-1);
 
-	close(file_dirc);
+	if (text_content)
+		write(fd, text_content, len);
 
+	close(fd);
 	return (1);
 }
