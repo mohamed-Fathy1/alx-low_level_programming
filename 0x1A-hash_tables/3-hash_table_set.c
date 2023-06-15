@@ -15,8 +15,8 @@ hash_node_t *new_node = ht->array[hash_index];
 if (!new_node)
 {
 new_node = malloc(sizeof(hash_node_t));
-new_node->key = malloc(sizeof(char) * strlen(key));
-new_node->value = malloc(sizeof(char) * strlen(value));
+new_node->key = malloc(sizeof(char) * strlen(key) + 1);
+new_node->value = malloc(sizeof(char) * strlen(value) + 1);
 strcpy(new_node->key, key);
 strcpy(new_node->value, value);
 new_node->next = NULL;
@@ -38,8 +38,8 @@ break;
 tmp = tmp->next;
 }
 new_head = malloc(sizeof(hash_node_t));
-new_head->key = malloc(sizeof(char) * strlen(key));
-new_head->value = malloc(sizeof(char) * strlen(value));
+new_head->key = malloc(sizeof(char) * strlen(key) + 1);
+new_head->value = malloc(sizeof(char) * strlen(value) + 1);
 strcpy(new_head->key, key);
 strcpy(new_head->value, value);
 new_head->next = new_node->next;
