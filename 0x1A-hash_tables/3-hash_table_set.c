@@ -14,11 +14,12 @@ hash_node_t *new_node = ht->array[hash_index];
 
 if (!new_node)
 {
-hash_node_t *new_head = malloc(sizeof(hash_node_t));
-new_head->key = strdup(key);
-new_head->value = strdup(value);
-new_head->next = NULL;
-new_node = new_head;
+new_node = malloc(sizeof(hash_node_t));
+new_node->key = malloc(sizeof(char) * strlen(key));
+new_node->value = malloc(sizeof(char) * strlen(value));
+strcpy(new_node->key, key);
+strcpy(new_node->value, value);
+new_node->next = NULL;
 return (1);
 }
 else
@@ -29,7 +30,7 @@ while (tmp)
 {
 if (strcmp(tmp->key, key) == 0)
 {
-tmp->value = strdup(value);
+strcpy(tmp->value, value);
 return (1);
 }
 if (!tmp->next)
@@ -37,8 +38,10 @@ break;
 tmp = tmp->next;
 }
 new_head = malloc(sizeof(hash_node_t));
-new_head->key = strdup(key);
-new_head->value = strdup(value);
+new_head->key = malloc(sizeof(char) * strlen(key));
+new_head->value = malloc(sizeof(char) * strlen(value));
+strcpy(new_head->key, key);
+strcpy(new_head->value, value);
 new_head->next = new_node->next;
 new_node = new_head;
 return (1);
