@@ -1,51 +1,53 @@
-#include "./hash_tables.h"
+#include "hash_tables.h"
 
 /**
- * hash_table_set - function
- * @ht: argument
- * @key: argument
- * @value: argument
- * Return: int
+ * hash_table_set - Add or update an element in a hash table.
+ * @ht: A pointer to the hash table.
+ * @key: The key to add - cannot be an empty string.
+ * @value: The value associated with key.
+ *
+ * Return: Upon failure - 0.
+ *         Otherwise - 1.
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-unsigned int hash_index = key_index((const unsigned char *)key, ht->size);
-hash_node_t *new_node = ht->array[hash_index];
-char *value_copy = strdup(value);
+	hash_node_t *new;
+	char *value_copy;
+	unsigned long int index, i;
 
-if (value_copy == NULL)
-return (0);
+	if (ht == NULL || key == NULL || *key == '\0' || value == NULL)
+		return (0);
 
-if (!new_node)
-{
-new_node = malloc(sizeof(hash_node_t));
-new_node->key = strdup(key);
-new_node->value = value_copy;
-new_node->next = NULL;
-return (1);
-}
-else
-{
-hash_node_t *new_head;
-hash_node_t *tmp = new_node;
-while (tmp)
-{
-if (strcmp(tmp->key, key) == 0)
-{
-free(tmp->value);
-tmp->value = value_copy;
-return (1);
-}
-if (!tmp->next)
-break;
-tmp = tmp->next;
-}
-new_head = malloc(sizeof(hash_node_t));
-new_head->key = strdup(key);
-new_head->value = value_copy;
-new_head->next = new_node->next;
-new_node = new_head;
-return (1);
-}
-return (0);
+	value_copy = strdup(value);
+	if (value_copy == NULL)
+		return (0);
+
+	index = key_index((const unsigned char *)key, ht->size);
+	for (i = index; ht->array[i]; i++)
+	{
+		if (strcmp(ht->array[i]->key, key) == 0)
+		{
+			free(ht->array[i]->value);
+			ht->array[i]->value = value_copy;
+			return (1);
+		}
+	}
+
+	new = malloc(sizeof(hash_node_t));
+	if (new == NULL)
+	{
+		free(value_copy);
+		return (0);
+	}
+	new->key = strdup(key);
+	if (new->key == NULL)
+	{
+		free(new);
+		return (0);
+	}
+	new->value = value_copy;
+	new->next = ht->array[index];
+	ht->array[index] = new;
+
+	return (1);
 }
