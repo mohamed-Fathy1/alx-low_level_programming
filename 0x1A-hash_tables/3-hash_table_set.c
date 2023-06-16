@@ -1,4 +1,27 @@
-#include "./hash_tables.h"
+#include "hash_tables.h"
+
+
+
+/**
+ * create_new_node - function
+ * @key: argument
+ * @value: argument
+ * Return: hash_node_t
+ */
+hash_node_t *create_new_node(const char *key, const char *value)
+{
+  hash_node_t *new_node = malloc(sizeof(hash_node_t));
+  if (new_node == NULL)
+    return (NULL);
+
+  new_node->key = strdup(key);
+  new_node->value = strdup(value);
+  new_node->next = NULL;
+
+  return (new_node);
+}
+
+
 
 /**
  * hash_table_set - function
@@ -9,43 +32,38 @@
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-unsigned int hash_index = key_index((const unsigned char *)key, ht->size);
-hash_node_t *new_node = ht->array[hash_index];
-char *value_copy = strdup(value);
+  unsigned int hash_index;
+  hash_node_t *new_node, *tmp, *new_head;
 
-if (value_copy == NULL)
-return (0);
+  if (!ht || !key || key[0] == '\0' || !value)
+    return (0);
 
-if (!new_node)
-{
-new_node = malloc(sizeof(hash_node_t));
-new_node->key = strdup(key);
-new_node->value = value_copy;
-new_node->next = NULL;
-return (1);
-}
-else
-{
-hash_node_t *new_head;
-hash_node_t *tmp = new_node;
-while (tmp)
-{
-if (strcmp(tmp->key, key) == 0)
-{
-free(tmp->value);
-tmp->value = value_copy;
-return (1);
-}
-if (!tmp->next)
-break;
-tmp = tmp->next;
-}
-new_head = malloc(sizeof(hash_node_t));
-new_head->key = strdup(key);
-new_head->value = value_copy;
-new_head->next = new_node->next;
-new_node = new_head;
-return (1);
-}
-return (0);
+  hash_index = key_index((const unsigned char *)key, ht->size);
+  new_node = ht->array[hash_index];
+
+  if (new_node == NULL)
+  {
+    new_node = create_new_node(key, value);
+    if (new_node == NULL)
+      return (0);
+    return (1);
+  }
+
+  tmp = new_node;
+  while (tmp)
+  {
+    if (strcmp(tmp->key, key) == 0)
+    {
+      free(tmp->value);
+      tmp->value = strdup(value);
+      return (1);
+    }
+    tmp = tmp->next;
+  }
+  new_head = create_new_node(key, value);
+  if (new_head == NULL)
+    return (0);
+  new_head->next = new_node;
+  ht->array[hash_index] = new_head;
+  return (1);
 }
