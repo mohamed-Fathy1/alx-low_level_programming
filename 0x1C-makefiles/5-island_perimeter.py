@@ -18,10 +18,7 @@ def island_perimeter(grid):
         num1 = 0
         for j in i:
             if j == 1:
-                try:
-                    if grid[num - 1][num1] == 0 or (num - 1) < 0:
-                        count += 1
-                except IndexError:
+                if grid[num - 1][num1] == 0 or (num - 1) < 0:
                     count += 1
                 try:
                     if grid[num + 1][num1] == 0:
@@ -33,10 +30,7 @@ def island_perimeter(grid):
                         count += 1
                 except IndexError:
                     count += 1
-                try:
-                    if grid[num][num1 - 1] == 0 or (num1 - 1) < 0:
-                        count += 1
-                except IndexError:
+                if grid[num][num1 - 1] == 0 or (num1 - 1) < 0:
                     count += 1
             num1 += 1
         num += 1
