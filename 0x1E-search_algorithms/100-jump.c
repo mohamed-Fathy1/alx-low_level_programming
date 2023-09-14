@@ -1,12 +1,12 @@
 #include "search_algos.h"
 
 /**
-  * jump_search - function
-  * @array: input
-  * @size: int
-  * @value: int to search for.
-  * Return: int
-  */
+ * jump_search - function
+ * @array: input
+ * @size: int
+ * @value: int to search for.
+ * Return: int
+ */
 int jump_search(int *array, size_t size, int value)
 {
 	size_t i, jump, step;
